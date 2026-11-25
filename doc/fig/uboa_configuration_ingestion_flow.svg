@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1420" height="1560" viewBox="0 0 1420 1560" role="img" aria-labelledby="title desc">
+  <title id="title">UBOA Configuration Ingestion Flow</title>
+  <desc id="desc">Engine.insert_configuration reads and validates users JSON, then treat_data processes supported operations in order and returns a list of operation statuses. Clearing precedes insertion and force_insert persists on the Engine instance.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .lane { fill: #ffffff; stroke: #dbe4ec; stroke-width: 1.5; }
+      .box { fill: #ffffff; stroke: #304c62; stroke-width: 2; }
+      .blue { fill: #e8f2ff; stroke: #2c6aa0; }
+      .green { fill: #e8f7ef; stroke: #2f7d55; }
+      .amber { fill: #fff6df; stroke: #a56a13; }
+      .gray { fill: #eef2f5; stroke: #596b7a; }
+      .red { fill: #fff0ef; stroke: #a33b32; }
+      text { font-family: Arial, Helvetica, sans-serif; fill: #1f2d38; }
+      .title { font-size: 34px; font-weight: 700; fill: #1d2c38; }
+      .subtitle { font-size: 18px; fill: #435363; }
+      .section { font-size: 18px; font-weight: 700; fill: #435363; }
+      .node-title { font-size: 21px; font-weight: 600; text-anchor: middle; }
+      .small { font-size: 18px; fill: #435363; text-anchor: middle; }
+      .label { font-size: 17px; font-weight: 700; text-anchor: middle; paint-order: stroke; stroke: #f8fafc; stroke-width: 6; stroke-linejoin: round; }
+      .arrow { stroke: #304c62; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead); }
+      .arrow-red { stroke: #a33b32; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead-red); }
+      .arrow-soft { stroke: #7b8a98; stroke-width: 2.5; fill: none; stroke-dasharray: 8 6; marker-end: url(#arrowhead-soft); }
+    </style>
+    <marker id="arrowhead" viewBox="0 0 12 10" refX="11" refY="5" markerWidth="12" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0 0 L12 5 L0 10 Z" fill="#304c62"/>
+    </marker>
+    <marker id="arrowhead-red" viewBox="0 0 12 10" refX="11" refY="5" markerWidth="12" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0 0 L12 5 L0 10 Z" fill="#a33b32"/>
+    </marker>
+    <marker id="arrowhead-soft" viewBox="0 0 12 10" refX="11" refY="5" markerWidth="12" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0 0 L12 5 L0 10 Z" fill="#7b8a98"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1420" height="1560"/>
+  <text class="title" x="60" y="64" text-anchor="start">Configuration Ingestion Flow</text>
+  <text class="subtitle" x="60" y="100" text-anchor="start">Validate the JSON structure before processing its list of user and role operations.</text>
+  <rect class="box blue" x="500" y="145" width="420" height="110" rx="12"/>
+  <text class="node-title" x="710.0" y="181.0">Load a users configuration</text>
+  <text class="small" x="710.0" y="207.0">Engine.insert_configuration(path)</text>
+  <text class="small" x="710.0" y="233.0">default: config_path("users.json")</text>
+  <rect class="box blue" x="500" y="310" width="420" height="100" rx="12"/>
+  <text class="node-title" x="710.0" y="354.0">Read and parse the JSON file</text>
+  <text class="small" x="710.0" y="380.0">parse_data_from_json()</text>
+  <polygon class="box amber" points="710,440.0 910.0,510 710,580.0 510.0,510"/>
+  <text class="node-title" x="710" y="504">Configuration</text>
+  <text class="node-title" x="710" y="530">structure valid?</text>
+  <rect class="box red" x="1010" y="450" width="350" height="130" rx="12"/>
+  <text class="node-title" x="1185.0" y="483.0">Return a file error status</text>
+  <text class="small" x="1185.0" y="509.0">missing or malformed JSON</text>
+  <text class="small" x="1185.0" y="535.0">or an invalid input structure</text>
+  <text class="small" x="1185.0" y="561.0">no operations are applied</text>
+  <rect class="box gray" x="60" y="405" width="350" height="190" rx="12"/>
+  <text class="node-title" x="235.0" y="455.0">Structure checks</text>
+  <text class="small" x="235.0" y="481.0">operations is a list of dictionaries</text>
+  <text class="small" x="235.0" y="507.0">each operation has a valid mode</text>
+  <text class="small" x="235.0" y="533.0">user fields and role declarations</text>
+  <text class="small" x="235.0" y="559.0">must have the expected types</text>
+  <rect class="box blue" x="500" y="640" width="420" height="100" rx="12"/>
+  <text class="node-title" x="710.0" y="684.0">Process the next operation</text>
+  <text class="small" x="710.0" y="710.0">treat_data(); preserve input order</text>
+  <polygon class="box amber" points="710,780.0 910.0,850 710,920.0 510.0,850"/>
+  <text class="node-title" x="710" y="857">Operation mode?</text>
+  <rect class="box amber" x="60" y="790" width="350" height="120" rx="12"/>
+  <text class="node-title" x="235.0" y="831.0">erase_and_insert</text>
+  <text class="small" x="235.0" y="857.0">clear all mapped tables</text>
+  <text class="small" x="235.0" y="883.0">before starting the insertion</text>
+  <rect class="box amber" x="1010" y="790" width="350" height="120" rx="12"/>
+  <text class="node-title" x="1185.0" y="831.0">force_insert</text>
+  <text class="small" x="1185.0" y="857.0">enable updates of existing records</text>
+  <text class="small" x="1185.0" y="883.0">on this Engine instance</text>
+  <rect class="box blue" x="500" y="1040" width="420" height="110" rx="12"/>
+  <text class="node-title" x="710.0" y="1076.0">Insert roles, then users</text>
+  <text class="small" x="710.0" y="1102.0">_insert_data()</text>
+  <text class="small" x="710.0" y="1128.0">create or update role associations</text>
+  <rect class="box gray" x="500" y="1200" width="420" height="100" rx="12"/>
+  <text class="node-title" x="710.0" y="1244.0">Append the operation status</text>
+  <text class="small" x="710.0" y="1270.0">OK or a handled insertion error</text>
+  <polygon class="box amber" points="710,1325.0 910.0,1395 710,1465.0 510.0,1395"/>
+  <text class="node-title" x="710" y="1402">More operations?</text>
+  <rect class="box green" x="1010" y="1345" width="350" height="100" rx="12"/>
+  <text class="node-title" x="1185.0" y="1389.0">Return the status list</text>
+  <text class="small" x="1185.0" y="1415.0">one entry per processed operation</text>
+  <path class="arrow" d="M710 255 V310"/>
+  <path class="arrow-red" d="M920 360 H970 V480 H1010"/>
+  <text class="label" x="970" y="339">read error</text>
+  <path class="arrow" d="M710 410 V440"/>
+  <path class="arrow-red" d="M910 510 H1010"/>
+  <text class="label" x="960" y="490">no</text>
+  <path class="arrow" d="M710 580 V640"/>
+  <text class="label" x="740" y="612">yes</text>
+  <path class="arrow" d="M710 740 V780"/>
+  <path class="arrow" d="M510 850 H410"/>
+  <path class="arrow" d="M910 850 H1010"/>
+  <path class="arrow" d="M710 920 V1040"/>
+  <text class="label" x="750" y="983">insert</text>
+  <path class="arrow" d="M235 910 V1095 H500"/>
+  <path class="arrow" d="M1185 910 V1095 H920"/>
+  <path class="arrow" d="M710 1150 V1200"/>
+  <path class="arrow" d="M710 1300 V1325"/>
+  <path class="arrow" d="M510 1395 H30 V690 H500"/>
+  <text class="label" x="475" y="1375">yes</text>
+  <path class="arrow" d="M910 1395 H1010"/>
+  <text class="label" x="960" y="1375">no</text>
+  <text class="small" x="710" y="1500">Cleared rows are not restored by a later insertion rollback; the file is not one atomic transaction.</text>
+  <text class="small" x="710" y="1530">Once force_insert is selected, forced updates stay enabled on that Engine instance.</text>
+</svg>

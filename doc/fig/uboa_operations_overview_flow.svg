@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1520"
+   height="933.83899"
+   viewBox="0 0 1520 933.83899"
+   role="img"
+   aria-labelledby="title desc"
+   version="1.1"
+   id="svg51"
+   sodipodi:docname="uboa_operations_overview_flow.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview51"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.57168916"
+     inkscape:cx="722.42055"
+     inkscape:cy="376.9531"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg51" />
+  <title
+     id="title">UBOA Operations Overview</title>
+  <desc
+     id="desc">UBOA initializes PostgreSQL, validates JSON operations, persists users and roles, and exposes filtered queries through its SQLAlchemy models.</desc>
+  <defs
+     id="defs3">
+    <style
+       id="style1">
+      .bg { fill: #f8fafc; }
+      .lane { fill: #ffffff; stroke: #dbe4ec; stroke-width: 1.5; }
+      .box { fill: #ffffff; stroke: #304c62; stroke-width: 2; }
+      .blue { fill: #e8f2ff; stroke: #2c6aa0; }
+      .green { fill: #e8f7ef; stroke: #2f7d55; }
+      .amber { fill: #fff6df; stroke: #a56a13; }
+      .gray { fill: #eef2f5; stroke: #596b7a; }
+      .red { fill: #fff0ef; stroke: #a33b32; }
+      text { font-family: Arial, Helvetica, sans-serif; fill: #1f2d38; }
+      .title { font-size: 34px; font-weight: 700; fill: #1d2c38; }
+      .subtitle { font-size: 18px; fill: #435363; }
+      .section { font-size: 18px; font-weight: 700; fill: #435363; }
+      .node-title { font-size: 21px; font-weight: 600; text-anchor: middle; }
+      .small { font-size: 18px; fill: #435363; text-anchor: middle; }
+      .label { font-size: 17px; font-weight: 700; text-anchor: middle; paint-order: stroke; stroke: #f8fafc; stroke-width: 6; stroke-linejoin: round; }
+      .arrow { stroke: #304c62; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead); }
+      .arrow-red { stroke: #a33b32; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead-red); }
+      .arrow-soft { stroke: #7b8a98; stroke-width: 2.5; fill: none; stroke-dasharray: 8 6; marker-end: url(#arrowhead-soft); }
+    </style>
+    <marker
+       id="arrowhead"
+       viewBox="0 0 12 10"
+       refX="11"
+       refY="5"
+       markerWidth="12"
+       markerHeight="10"
+       markerUnits="userSpaceOnUse"
+       orient="auto">
+      <path
+         d="M 0,0 12,5 0,10 Z"
+         fill="#304c62"
+         id="path1" />
+    </marker>
+    <marker
+       id="arrowhead-red"
+       viewBox="0 0 12 10"
+       refX="11"
+       refY="5"
+       markerWidth="12"
+       markerHeight="10"
+       markerUnits="userSpaceOnUse"
+       orient="auto">
+      <path
+         d="M 0,0 12,5 0,10 Z"
+         fill="#a33b32"
+         id="path2" />
+    </marker>
+    <marker
+       id="arrowhead-soft"
+       viewBox="0 0 12 10"
+       refX="11"
+       refY="5"
+       markerWidth="12"
+       markerHeight="10"
+       markerUnits="userSpaceOnUse"
+       orient="auto">
+      <path
+         d="M 0,0 12,5 0,10 Z"
+         fill="#7b8a98"
+         id="path3" />
+    </marker>
+  </defs>
+  <rect
+     class="bg"
+     width="1520"
+     height="933.83899"
+     id="rect3"
+     x="0"
+     y="0"
+     style="stroke-width:0.938605" />
+  <text
+     class="title"
+     x="60"
+     y="64"
+     text-anchor="start"
+     id="text3">Operations Overview</text>
+  <rect
+     class="lane"
+     x="40"
+     y="108"
+     width="430"
+     height="800"
+     rx="16"
+     id="rect4" />
+  <text
+     class="section"
+     x="64"
+     y="142"
+     text-anchor="start"
+     id="text5">ENTRY POINTS AND CONFIGURATION</text>
+  <rect
+     class="lane"
+     x="510"
+     y="108"
+     width="500"
+     height="800"
+     rx="16"
+     id="rect5" />
+  <text
+     class="section"
+     x="534"
+     y="142"
+     text-anchor="start"
+     id="text6">INITIALIZATION AND ENGINE API</text>
+  <rect
+     class="lane"
+     x="1050"
+     y="108"
+     width="430"
+     height="800"
+     rx="16"
+     id="rect6" />
+  <text
+     class="section"
+     x="1074"
+     y="142"
+     text-anchor="start"
+     id="text7">PERSISTENCE AND APPLICATIONS</text>
+  <rect
+     class="box blue"
+     x="70"
+     y="178"
+     width="370"
+     height="110"
+     rx="12"
+     id="rect7" />
+  <text
+     class="node-title"
+     x="255"
+     y="228"
+     id="text8">Initialize the database</text>
+  <text
+     class="small"
+     x="255"
+     y="254"
+     id="text9">uboa_init.py</text>
+  <rect
+     class="box blue"
+     x="550"
+     y="178"
+     width="420"
+     height="110"
+     rx="12"
+     id="rect10" />
+  <text
+     class="node-title"
+     x="760"
+     y="214"
+     id="text11">Reset and load the SQL model</text>
+  <text
+     class="small"
+     x="760"
+     y="240"
+     id="text12">uboa_init_ddbb.sh via psql</text>
+  <text
+     class="small"
+     x="760"
+     y="266"
+     id="text13">bundled model or an explicit path</text>
+  <rect
+     class="box blue"
+     x="70"
+     y="368"
+     width="370"
+     height="120"
+     rx="12"
+     id="rect13" />
+  <text
+     class="node-title"
+     x="255"
+     y="409"
+     id="text14">Load users configuration</text>
+  <text
+     class="small"
+     x="255"
+     y="435"
+     id="text15">users.json or a custom JSON file</text>
+  <text
+     class="small"
+     x="255"
+     y="461"
+     id="text16">Engine.insert_configuration()</text>
+  <rect
+     class="box amber"
+     x="550"
+     y="368"
+     width="420"
+     height="120"
+     rx="12"
+     id="rect16" />
+  <text
+     class="node-title"
+     x="760"
+     y="409"
+     id="text17">Validate and apply operations</text>
+  <text
+     class="small"
+     x="760"
+     y="435"
+     id="text18">insert / erase_and_insert / force_insert</text>
+  <text
+     class="small"
+     x="760"
+     y="461"
+     id="text19">roles first, then users and role links</text>
+  <rect
+     class="box blue"
+     x="70"
+     y="568"
+     width="370"
+     height="110"
+     rx="12"
+     id="rect19" />
+  <text
+     class="node-title"
+     x="255"
+     y="604"
+     id="text20">Read or delete users and roles</text>
+  <text
+     class="small"
+     x="255"
+     y="630"
+     id="text21">application requests</text>
+  <text
+     class="small"
+     x="255"
+     y="656"
+     id="text22">Query API</text>
+  <rect
+     class="box blue"
+     x="550"
+     y="568"
+     width="420"
+     height="110"
+     rx="12"
+     id="rect22" />
+  <text
+     class="node-title"
+     x="760"
+     y="604"
+     id="text23">Build and execute a query</text>
+  <text
+     class="small"
+     x="760"
+     y="630"
+     id="text24">get_users() / get_roles()</text>
+  <text
+     class="small"
+     x="760"
+     y="656"
+     id="text25">validated filters, ordering and pagination</text>
+  <rect
+     class="box green"
+     x="1090"
+     y="178"
+     width="350"
+     height="500"
+     rx="12"
+     id="rect25" />
+  <text
+     class="node-title"
+     x="1265"
+     y="344"
+     id="text26">PostgreSQL: uboadb</text>
+  <text
+     class="small"
+     x="1265"
+     y="370"
+     id="text27">Core user-management tables</text>
+  <text
+     class="small"
+     x="1265"
+     y="396"
+     id="text28">users: identity and account state</text>
+  <text
+     class="small"
+     x="1265"
+     y="422"
+     id="text29">roles: names and descriptions</text>
+  <text
+     class="small"
+     x="1265"
+     y="448"
+     id="text30">roles_users: user-to-role links</text>
+  <text
+     class="small"
+     x="1265"
+     y="506"
+     id="text31" />
+  <text
+     class="small"
+     x="1265"
+     y="500"
+     id="text32">SQLAlchemy persists and queries</text>
+  <text
+     class="small"
+     x="1265"
+     y="526"
+     id="text33">the user-management records.</text>
+  <rect
+     class="box gray"
+     x="70"
+     y="758"
+     width="370"
+     height="120"
+     rx="12"
+     id="rect33" />
+  <text
+     class="node-title"
+     x="255"
+     y="799"
+     id="text34">Component configuration</text>
+  <text
+     class="small"
+     x="255"
+     y="825"
+     id="text35">UBOA_RESOURCES_PATH</text>
+  <text
+     class="small"
+     x="255"
+     y="851"
+     id="text36">database, engine and users JSON</text>
+  <rect
+     class="box gray"
+     x="550"
+     y="758"
+     width="420"
+     height="120"
+     rx="12"
+     id="rect36" />
+  <text
+     class="node-title"
+     x="760"
+     y="799"
+     id="text37">Operation results and logging</text>
+  <text
+     class="small"
+     x="760"
+     y="825"
+     id="text38">one status per processed operation</text>
+  <text
+     class="small"
+     x="760"
+     y="851"
+     id="text39">UBOA_LOG_PATH / uboa_engine.log</text>
+  <rect
+     class="box gray"
+     x="1090"
+     y="758"
+     width="350"
+     height="120"
+     rx="12"
+     id="rect39" />
+  <text
+     class="node-title"
+     x="1265"
+     y="799"
+     id="text40">Flask-Security integration</text>
+  <text
+     class="small"
+     x="1265"
+     y="825"
+     id="text41">UserMixin and RoleMixin</text>
+  <text
+     class="small"
+     x="1265"
+     y="851"
+     id="text42">application authentication support</text>
+  <path
+     class="arrow"
+     d="M 440,233 H 550"
+     id="path42" />
+  <path
+     class="arrow"
+     d="m 970,233 h 120"
+     id="path43" />
+  <path
+     class="arrow"
+     d="M 440,428 H 550"
+     id="path44" />
+  <path
+     class="arrow"
+     d="m 970,428 h 120"
+     id="path45" />
+  <path
+     class="arrow"
+     d="M 440,623 H 550"
+     id="path46" />
+  <path
+     class="arrow"
+     d="m 970,623 h 120"
+     id="path47" />
+  <text
+     class="label"
+     x="1030"
+     y="213"
+     id="text47">schema</text>
+  <text
+     class="label"
+     x="1030"
+     y="408"
+     id="text48">write</text>
+  <text
+     class="label"
+     x="1030"
+     y="603"
+     id="text49">SQL</text>
+  <path
+     class="arrow-soft"
+     d="m 1265,678 v 80"
+     id="path49" />
+  <path
+     class="arrow-soft"
+     d="m 760,488 v 45 h 265 v 285 h -55"
+     id="path50" />
+  <metadata
+     id="metadata51">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>UBOA Operations Overview</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

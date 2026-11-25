@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1420"
+   height="1490"
+   viewBox="0 0 1420 1490"
+   role="img"
+   aria-labelledby="title desc"
+   version="1.1"
+   id="svg53"
+   sodipodi:docname="uboa_database_initialization_flow.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview53"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.81341008"
+     inkscape:cx="709.35929"
+     inkscape:cy="1062.8095"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg53" />
+  <title
+     id="title">UBOA Database Initialization Flow</title>
+  <desc
+     id="desc">uboa_init.py confirms a reset, resolves the database and SQL model, calls the PostgreSQL initializer, and optionally loads users JSON and checks operation statuses.</desc>
+  <defs
+     id="defs3">
+    <style
+       id="style1">
+      .bg { fill: #f8fafc; }
+      .lane { fill: #ffffff; stroke: #dbe4ec; stroke-width: 1.5; }
+      .box { fill: #ffffff; stroke: #304c62; stroke-width: 2; }
+      .blue { fill: #e8f2ff; stroke: #2c6aa0; }
+      .green { fill: #e8f7ef; stroke: #2f7d55; }
+      .amber { fill: #fff6df; stroke: #a56a13; }
+      .gray { fill: #eef2f5; stroke: #596b7a; }
+      .red { fill: #fff0ef; stroke: #a33b32; }
+      text { font-family: Arial, Helvetica, sans-serif; fill: #1f2d38; }
+      .title { font-size: 34px; font-weight: 700; fill: #1d2c38; }
+      .subtitle { font-size: 18px; fill: #435363; }
+      .section { font-size: 18px; font-weight: 700; fill: #435363; }
+      .node-title { font-size: 21px; font-weight: 600; text-anchor: middle; }
+      .small { font-size: 18px; fill: #435363; text-anchor: middle; }
+      .label { font-size: 17px; font-weight: 700; text-anchor: middle; paint-order: stroke; stroke: #f8fafc; stroke-width: 6; stroke-linejoin: round; }
+      .arrow { stroke: #304c62; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead); }
+      .arrow-red { stroke: #a33b32; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead-red); }
+      .arrow-soft { stroke: #7b8a98; stroke-width: 2.5; fill: none; stroke-dasharray: 8 6; marker-end: url(#arrowhead-soft); }
+    </style>
+    <marker
+       id="arrowhead"
+       viewBox="0 0 12 10"
+       refX="11"
+       refY="5"
+       markerWidth="12"
+       markerHeight="10"
+       markerUnits="userSpaceOnUse"
+       orient="auto">
+      <path
+         d="M0 0 L12 5 L0 10 Z"
+         fill="#304c62"
+         id="path1" />
+    </marker>
+    <marker
+       id="arrowhead-red"
+       viewBox="0 0 12 10"
+       refX="11"
+       refY="5"
+       markerWidth="12"
+       markerHeight="10"
+       markerUnits="userSpaceOnUse"
+       orient="auto">
+      <path
+         d="M0 0 L12 5 L0 10 Z"
+         fill="#a33b32"
+         id="path2" />
+    </marker>
+    <marker
+       id="arrowhead-soft"
+       viewBox="0 0 12 10"
+       refX="11"
+       refY="5"
+       markerWidth="12"
+       markerHeight="10"
+       markerUnits="userSpaceOnUse"
+       orient="auto">
+      <path
+         d="M0 0 L12 5 L0 10 Z"
+         fill="#7b8a98"
+         id="path3" />
+    </marker>
+  </defs>
+  <rect
+     class="bg"
+     width="1420"
+     height="1490"
+     id="rect3" />
+  <text
+     class="title"
+     x="60"
+     y="64"
+     text-anchor="start"
+     id="text3">Database Initialization Flow</text>
+  <text
+     class="subtitle"
+     x="60"
+     y="100"
+     text-anchor="start"
+     id="text4">Create the user-management schema, then optionally load the configured users and roles.</text>
+  <rect
+     class="box blue"
+     x="500"
+     y="145"
+     width="420"
+     height="100"
+     rx="12"
+     id="rect4" />
+  <text
+     class="node-title"
+     x="710.0"
+     y="176.0"
+     id="text5">Run uboa_init.py</text>
+  <text
+     class="small"
+     x="710.0"
+     y="202.0"
+     id="text6">-f SQL model; -u users JSON</text>
+  <text
+     class="small"
+     x="710.0"
+     y="228.0"
+     id="text7">-n skip users; -y accept reset</text>
+  <polygon
+     class="box amber"
+     points="710,270.0 910.0,340 710,410.0 510.0,340"
+     id="polygon7" />
+  <text
+     class="node-title"
+     x="710"
+     y="334"
+     id="text8">Reset confirmed?</text>
+  <text
+     class="node-title"
+     x="710"
+     y="360"
+     id="text9">-y or reply y</text>
+  <rect
+     class="box gray"
+     x="60"
+     y="290"
+     width="350"
+     height="100"
+     rx="12"
+     id="rect9" />
+  <text
+     class="node-title"
+     x="235.0"
+     y="334.0"
+     id="text10">Abort without resetting</text>
+  <text
+     class="small"
+     x="235.0"
+     y="360.0"
+     id="text11">exit successfully if declined</text>
+  <rect
+     class="box gray"
+     x="500"
+     y="455"
+     width="420"
+     height="115"
+     rx="12"
+     id="rect11" />
+  <text
+     class="node-title"
+     x="710.0"
+     y="493.5"
+     id="text12">Resolve database and SQL model</text>
+  <text
+     class="small"
+     x="710.0"
+     y="519.5"
+     id="text13">uboa_datamodel.json; UBOA_DDBB_HOST</text>
+  <text
+     class="small"
+     x="710.0"
+     y="545.5"
+     id="text14">bundled SQL unless -f is supplied</text>
+  <rect
+     class="box red"
+     x="1010"
+     y="465"
+     width="350"
+     height="100"
+     rx="12"
+     id="rect14" />
+  <text
+     class="node-title"
+     x="1185.0"
+     y="509.0"
+     id="text15">Exit on a missing SQL file</text>
+  <text
+     class="small"
+     x="1185.0"
+     y="535.0"
+     id="text16">an explicit -f path must exist</text>
+  <rect
+     class="box blue"
+     x="500"
+     y="625"
+     width="420"
+     height="105"
+     rx="12"
+     id="rect16" />
+  <text
+     class="node-title"
+     x="710.0"
+     y="658.5"
+     id="text17">Check the existing database</text>
+  <text
+     class="small"
+     x="710.0"
+     y="684.5"
+     id="text18">uboa_init_ddbb.sh</text>
+  <text
+     class="small"
+     x="710.0"
+     y="710.5"
+     id="text19">count active uboadb connections</text>
+  <polygon
+     class="box amber"
+     points="710,760.0 910.0,830 710,900.0 510.0,830"
+     id="polygon19" />
+  <text
+     class="node-title"
+     x="710"
+     y="824"
+     id="text20">No active</text>
+  <text
+     class="node-title"
+     x="710"
+     y="850"
+     id="text21">database sessions?</text>
+  <rect
+     class="box red"
+     x="1010"
+     y="780"
+     width="350"
+     height="100"
+     rx="12"
+     id="rect21" />
+  <text
+     class="node-title"
+     x="1185.0"
+     y="824.0"
+     id="text22">Stop initialization</text>
+  <text
+     class="small"
+     x="1185.0"
+     y="850.0"
+     id="text23">active sessions prevent the reset</text>
+  <rect
+     class="box green"
+     x="500"
+     y="955"
+     width="420"
+     height="115"
+     rx="12"
+     id="rect23" />
+  <text
+     class="node-title"
+     x="710.0"
+     y="993.5"
+     id="text24">Reset and load the schema</text>
+  <text
+     class="small"
+     x="710.0"
+     y="1019.5"
+     id="text25">drop existing database and role</text>
+  <text
+     class="small"
+     x="710.0"
+     y="1045.5"
+     id="text26">create uboadb; run SQL with psql</text>
+  <rect
+     class="box red"
+     x="1010"
+     y="960"
+     width="350"
+     height="110"
+     rx="12"
+     id="rect26" />
+  <text
+     class="node-title"
+     x="1185.0"
+     y="996.0"
+     id="text27">Exit on SQL load failure</text>
+  <text
+     class="small"
+     x="1185.0"
+     y="1022.0"
+     id="text28">a failed psql model load</text>
+  <text
+     class="small"
+     x="1185.0"
+     y="1048.0"
+     id="text29">stops user configuration loading</text>
+  <polygon
+     class="box amber"
+     points="710,1100.0 910.0,1170 710,1240.0 510.0,1170"
+     id="polygon29" />
+  <text
+     class="node-title"
+     x="710"
+     y="1164"
+     id="text30">Load users?</text>
+  <text
+     class="node-title"
+     x="710"
+     y="1190"
+     id="text31">without -n</text>
+  <rect
+     class="box green"
+     x="60"
+     y="1120"
+     width="350"
+     height="100"
+     rx="12"
+     id="rect31" />
+  <text
+     class="node-title"
+     x="235.0"
+     y="1164.0"
+     id="text32">Finish after schema reset</text>
+  <text
+     class="small"
+     x="235.0"
+     y="1190.0"
+     id="text33">users loading was skipped</text>
+  <rect
+     class="box blue"
+     x="500"
+     y="1300"
+     width="420"
+     height="130"
+     rx="12"
+     id="rect33" />
+  <text
+     class="node-title"
+     x="710.0"
+     y="1333.0"
+     id="text34">Load users and inspect statuses</text>
+  <text
+     class="small"
+     x="710.0"
+     y="1359.0"
+     id="text35">Engine.insert_configuration()</text>
+  <text
+     class="small"
+     x="710.0"
+     y="1385.0"
+     id="text36">default users.json or the -u file</text>
+  <text
+     class="small"
+     x="710.0"
+     y="1411.0"
+     id="text37">success exits 0; failed statuses exit -1</text>
+  <rect
+     class="box gray"
+     x="60"
+     y="625"
+     width="350"
+     height="180"
+     rx="12"
+     id="rect37" />
+  <text
+     class="node-title"
+     x="235.0"
+     y="683.0"
+     id="text38">Development helper</text>
+  <text
+     class="small"
+     x="235.0"
+     y="709.0"
+     id="text39">initialize_uboa_ddbb.sh</text>
+  <text
+     class="small"
+     x="235.0"
+     y="735.0"
+     id="text40">runs uboa_init.py -y</text>
+  <text
+     class="small"
+     x="235.0"
+     y="761.0"
+     id="text41">and forwards its arguments.</text>
+  <path
+     class="arrow"
+     d="M710 245 V270"
+     id="path41" />
+  <path
+     class="arrow"
+     d="M510 340 H410"
+     id="path42" />
+  <text
+     class="label"
+     x="465"
+     y="320"
+     id="text42">no</text>
+  <path
+     class="arrow"
+     d="M710 410 V455"
+     id="path43" />
+  <text
+     class="label"
+     x="740"
+     y="439"
+     id="text43">yes</text>
+  <path
+     class="arrow-red"
+     d="M920 512 H1010"
+     id="path44" />
+  <text
+     class="label"
+     x="965"
+     y="492"
+     id="text44">missing</text>
+  <path
+     class="arrow"
+     d="M710 570 V625"
+     id="path45" />
+  <path
+     class="arrow"
+     d="M710 730 V760"
+     id="path46" />
+  <path
+     class="arrow-red"
+     d="M910 830 H1010"
+     id="path47" />
+  <text
+     class="label"
+     x="960"
+     y="810"
+     id="text47">no</text>
+  <path
+     class="arrow"
+     d="M710 900 V955"
+     id="path48" />
+  <text
+     class="label"
+     x="740"
+     y="932"
+     id="text48">yes</text>
+  <path
+     class="arrow-red"
+     d="M920 1012 H1010"
+     id="path49" />
+  <text
+     class="label"
+     x="965"
+     y="992"
+     id="text49">failed</text>
+  <path
+     class="arrow"
+     d="M710 1070 V1100"
+     id="path50" />
+  <path
+     class="arrow"
+     d="M510 1170 H410"
+     id="path51" />
+  <text
+     class="label"
+     x="465"
+     y="1150"
+     id="text51">no</text>
+  <path
+     class="arrow"
+     d="M710 1240 V1300"
+     id="path52" />
+  <text
+     class="label"
+     x="740"
+     y="1274"
+     id="text52">yes</text>
+</svg>

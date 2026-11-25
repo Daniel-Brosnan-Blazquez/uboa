@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1520" height="1490" viewBox="0 0 1520 1490" role="img" aria-labelledby="title desc">
+  <title id="title">UBOA Role and User Insertion Flow</title>
+  <desc id="desc">Each operation resolves declared and referenced roles, checks duplicate users, creates missing users or updates existing matching identities when forced, persists role links, and commits or returns a handled error status.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .lane { fill: #ffffff; stroke: #dbe4ec; stroke-width: 1.5; }
+      .box { fill: #ffffff; stroke: #304c62; stroke-width: 2; }
+      .blue { fill: #e8f2ff; stroke: #2c6aa0; }
+      .green { fill: #e8f7ef; stroke: #2f7d55; }
+      .amber { fill: #fff6df; stroke: #a56a13; }
+      .gray { fill: #eef2f5; stroke: #596b7a; }
+      .red { fill: #fff0ef; stroke: #a33b32; }
+      text { font-family: Arial, Helvetica, sans-serif; fill: #1f2d38; }
+      .title { font-size: 34px; font-weight: 700; fill: #1d2c38; }
+      .subtitle { font-size: 18px; fill: #435363; }
+      .section { font-size: 18px; font-weight: 700; fill: #435363; }
+      .node-title { font-size: 21px; font-weight: 600; text-anchor: middle; }
+      .small { font-size: 18px; fill: #435363; text-anchor: middle; }
+      .label { font-size: 17px; font-weight: 700; text-anchor: middle; paint-order: stroke; stroke: #f8fafc; stroke-width: 6; stroke-linejoin: round; }
+      .arrow { stroke: #304c62; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead); }
+      .arrow-red { stroke: #a33b32; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead-red); }
+      .arrow-soft { stroke: #7b8a98; stroke-width: 2.5; fill: none; stroke-dasharray: 8 6; marker-end: url(#arrowhead-soft); }
+    </style>
+    <marker id="arrowhead" viewBox="0 0 12 10" refX="11" refY="5" markerWidth="12" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0 0 L12 5 L0 10 Z" fill="#304c62"/>
+    </marker>
+    <marker id="arrowhead-red" viewBox="0 0 12 10" refX="11" refY="5" markerWidth="12" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0 0 L12 5 L0 10 Z" fill="#a33b32"/>
+    </marker>
+    <marker id="arrowhead-soft" viewBox="0 0 12 10" refX="11" refY="5" markerWidth="12" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0 0 L12 5 L0 10 Z" fill="#7b8a98"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1520" height="1490"/>
+  <text class="title" x="60" y="64" text-anchor="start">Role and User Insertion Flow</text>
+  <text class="subtitle" x="60" y="100" text-anchor="start">Resolve role records first, then create or update user identities and their role assignments.</text>
+  <rect class="box blue" x="500" y="145" width="520" height="110" rx="12"/>
+  <text class="node-title" x="760.0" y="181.0">Apply one operation</text>
+  <text class="small" x="760.0" y="207.0">_insert_data()</text>
+  <text class="small" x="760.0" y="233.0">initialize role context; begin nested transaction</text>
+  <rect class="box blue" x="500" y="310" width="520" height="150" rx="12"/>
+  <text class="node-title" x="760.0" y="353.0">Resolve declared and referenced roles</text>
+  <text class="small" x="760.0" y="379.0">create missing roles; reuse existing referenced roles</text>
+  <text class="small" x="760.0" y="405.0">force: update descriptions of declared roles</text>
+  <text class="small" x="760.0" y="431.0">reject duplicate names or conflicting declarations</text>
+  <rect class="box red" x="1110" y="330" width="350" height="110" rx="12"/>
+  <text class="node-title" x="1285.0" y="366.0">Handled role error</text>
+  <text class="small" x="1285.0" y="392.0">rollback the insertion transaction</text>
+  <text class="small" x="1285.0" y="418.0">return the corresponding status</text>
+  <rect class="box gray" x="60" y="310" width="350" height="230" rx="12"/>
+  <text class="node-title" x="235.0" y="367.0">Existing-user updates</text>
+  <text class="small" x="235.0" y="393.0">Passwords stay unchanged.</text>
+  <text class="small" x="235.0" y="419.0">Optional group and active values</text>
+  <text class="small" x="235.0" y="445.0">update the stored account.</text>
+  <text class="small" x="235.0" y="471.0">The supplied roles replace</text>
+  <text class="small" x="235.0" y="497.0">the previous role assignments.</text>
+  <rect class="box amber" x="500" y="545" width="520" height="125" rx="12"/>
+  <text class="node-title" x="760.0" y="588.5">Validate users in this operation</text>
+  <text class="small" x="760.0" y="614.5">reject duplicate emails or usernames</text>
+  <text class="small" x="760.0" y="640.5">find stored users by email OR username</text>
+  <rect class="box red" x="1110" y="550" width="350" height="110" rx="12"/>
+  <text class="node-title" x="1285.0" y="573.0">Handled user error</text>
+  <text class="small" x="1285.0" y="599.0">duplicates, existing-user conflict,</text>
+  <text class="small" x="1285.0" y="625.0">or mismatched email and username</text>
+  <text class="small" x="1285.0" y="651.0">rollback; return an error status</text>
+  <polygon class="box amber" points="760,745.0 980.0,815 760,885.0 540.0,815"/>
+  <text class="node-title" x="760" y="809">For each user:</text>
+  <text class="node-title" x="760" y="835">already exists?</text>
+  <rect class="box blue" x="60" y="970" width="350" height="180" rx="12"/>
+  <text class="node-title" x="235.0" y="1015.0">Create a new user</text>
+  <text class="small" x="235.0" y="1041.0">create UUID and fs_uniquifier</text>
+  <text class="small" x="235.0" y="1067.0">default group: boa_users</text>
+  <text class="small" x="235.0" y="1093.0">default active: true</text>
+  <text class="small" x="235.0" y="1119.0">store the supplied password as-is</text>
+  <rect class="box amber" x="1110" y="745" width="350" height="180" rx="12"/>
+  <text class="node-title" x="1285.0" y="790.0">Update the existing user</text>
+  <text class="small" x="1285.0" y="816.0">force updates must be enabled</text>
+  <text class="small" x="1285.0" y="842.0">email AND username must match</text>
+  <text class="small" x="1285.0" y="868.0">update optional group and active</text>
+  <text class="small" x="1285.0" y="894.0">replace the user-to-role links</text>
+  <rect class="box green" x="500" y="1120" width="520" height="145" rx="12"/>
+  <text class="node-title" x="760.0" y="1160.5">After all users: save role associations</text>
+  <text class="small" x="760.0" y="1186.5">bulk-insert role links for newly created users</text>
+  <text class="small" x="760.0" y="1212.5">commit the operation</text>
+  <text class="small" x="760.0" y="1238.5">close and reopen the insertion session</text>
+  <rect class="box green" x="500" y="1325" width="520" height="100" rx="12"/>
+  <text class="node-title" x="760.0" y="1369.0">Return an OK status</text>
+  <text class="small" x="760.0" y="1395.0">treat_data() can process the next operation</text>
+  <path class="arrow" d="M760 255 V310"/>
+  <path class="arrow-red" d="M1020 385 H1110"/>
+  <text class="label" x="1065" y="365">error</text>
+  <path class="arrow" d="M760 460 V545"/>
+  <path class="arrow-red" d="M1020 607 H1110"/>
+  <text class="label" x="1065" y="587">error</text>
+  <path class="arrow" d="M760 670 V745"/>
+  <path class="arrow" d="M540 815 H235 V970"/>
+  <text class="label" x="480" y="795">no</text>
+  <path class="arrow" d="M980 815 H1110"/>
+  <text class="label" x="1045" y="795">yes</text>
+  <path class="arrow-red" d="M1285 745 V660"/>
+  <text class="label" x="1325" y="705">conflict</text>
+  <path class="arrow" d="M235 1150 V1192 H500"/>
+  <path class="arrow" d="M1285 925 V1192 H1020"/>
+  <path class="arrow" d="M760 1265 V1325"/>
+  <text class="small" x="760" y="1460">This insertion follows any erase_and_insert clearing; a rollback does not restore the cleared rows.</text>
+</svg>
